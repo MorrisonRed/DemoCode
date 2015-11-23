@@ -1,0 +1,100 @@
+﻿@using democode.mvc.Helpers
+
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+@model IEnumerable<democode.mvc.Models.EventMessage>
+@{
+    ViewBag.Title = "Event Messages";
+}
+
+<h2>Event Messages</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index", "EventMessage", FormMethod.Get))
+    { 
+        <p>
+            @*Genre: @Html.DropDownList("movieGenre", "All")
+            Title: @Html.TextBox("SearchString")*@
+            <input type="submit" value="Filter" />
+        
+        </p>
+    }
+</p>
+
+<table class="table table-striped" data-expand-first="true">
+    <tr>
+        <th data-breakpoints="xs">@Html.DisplayNameFor(model => model.EventID)</th>
+        <th>
+
+        </th>
+        @*<th>@Html.DisplayNameFor(model => model.Level)</th>
+        <th>@Html.DisplayNameFor(model => model.Action)</th>
+        <th>@Html.DisplayNameFor(model => model.Result)</th>*@
+        <th data-breakpoints="xs">@Html.DisplayNameFor(model => model.Application)</th>
+        <th data-breakpoints="xs" data-visible="false">@Html.DisplayNameFor(model => model.ApplicationVersion)</th>
+        <th data-visible="false">@Html.DisplayNameFor(model => model.OperationCode)</th>
+        <th data-breakpoints="xs">@Html.DisplayNameFor(model => model.Keywords)</th>
+        <th data-breakpoints="xs">@Html.DisplayNameFor(model => model.EventDateTime)</th>
+        <th data-breakpoints="xs" data-visible="false">@Html.DisplayNameFor(model => model.UID)</th>
+        <th>@Html.DisplayNameFor(model => model.IP)</th>
+        <th data-breakpoints="xs">@Html.DisplayNameFor(model => model.URL)</th>
+        <th></th>
+    </tr>
+
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.EventID)</td>
+                <td>
+                    @HtmlHelpers.getFontAwesomeEventLevel(item.Level)
+                    @HtmlHelpers.getFontAwesomeEventAction(item.Action)
+                    @HtmlHelpers.getFontAwesomeEventResult(item.Result)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Application)</td>
+                <td>@Html.DisplayFor(modelItem => item.ApplicationVersion)</td>
+                <td>@Html.DisplayFor(modelItem => item.OperationCode)</td>
+                <td>@Html.DisplayFor(modelItem => item.Keywords)</td>
+                <td>@Html.DisplayFor(modelItem => item.EventDateTime)</td>
+                <td>@Html.DisplayFor(modelItem => item.UID)</td>
+                <td>@Html.DisplayFor(modelItem => item.IP)</td>
+                <td>@Html.DisplayFor(modelItem => item.URL)</td>
+
+                <td>
+                    @Html.ActionLink("<i class='fa fa-pencil-square'></i>", "Edit", new { id = item.EventID }) 
+                    @Html.ActionLink("<i class='fa fa-caret-square-o-down'></i>", "Details", new { id = item.EventID }) 
+                    @Html.ActionLink("<i class='fa fa-minus-square'></i>", "Delete", new { id = item.EventID })
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/scrollto")
+    @Scripts.Render("~/bundles/slider")
+    @Styles.Render("~/Content/slider")
+    @Scripts.Render("~/jQuery/footable-bootstrap/js/footable.min.js")
+    @Scripts.Render("//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js")
+    @Styles.Render("~/jQuery/footable-bootstrap/css/footable.bootstrap.min.css")
+    
+    <style type="text/css">
+        .col-xs-3 {
+            height:100px;
+            background-color:blue;
+            color:white;
+            text-align:center;
+        }
+    </style>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.table').footable();
+        });
+    </script>
+}
+
+

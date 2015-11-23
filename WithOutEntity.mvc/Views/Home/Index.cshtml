@@ -1,0 +1,191 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>DemoCode MVC</h1>
+    <p class="lead">This site is built on MVC 5 using HTML, CSS, Bootstrap and Javascript.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="/home/about/" class="bordered-feature-image">
+            <img class="img-responsive" src="/images/56002539.png" alt="about me" />
+        </a>
+        <h3>About Me</h3>
+        <p style="">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium:
+        </p>
+        <ul style="margin-left:0px;list-style:disc;padding-bottom:0px;margin-bottom:0px;">
+            <li>Sed ut perspiciatis unde</li>
+            <li>Omnis iste natus error</li>
+            <li>Voluptatem accusantium</li>
+            <li>Doloremque laudantium</li>
+        </ul>
+        <a class="btn btn-default" style="margin-top:10px;" href="/home/about/">more ...</a>
+    </div>
+    <div class="col-md-4">
+        <a href="/Projects/" class="bordered-feature-image">
+            <img class="img-responsive" src="/images/209171149.png" alt="projects" />
+        </a>
+        <h3>Projects</h3>
+        <p style="">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium:
+        </p>
+        <ul style="margin-left:0px;list-style:disc;padding-bottom:0px;margin-bottom:0px;">
+            <li>Sed ut perspiciatis unde</li>
+            <li>Omnis iste natus error</li>
+            <li>Voluptatem accusantium</li>
+            <li>Doloremque laudantium</li>
+        </ul>
+        <a class="btn btn-default" style="margin-top:10px;" href="/Projects/">more ...</a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/home/Contact/" class="bordered-feature-image">
+            <img class="img-responsive" src="/images/DSC00520.png" alt="get in touch" />
+        </a>
+        <h3>Get In Touch</h3>
+        <p style="">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium:
+        </p>
+        <ul style="margin-left:0px;list-style:disc;padding-bottom:0px;margin-bottom:0px;">
+            <li>Sed ut perspiciatis unde</li>
+            <li>Omnis iste natus error</li>
+            <li>Voluptatem accusantium</li>
+            <li>Doloremque laudantium</li>
+        </ul>
+        <p>
+            @Html.ActionLink("more ...", "Contact", "Home", null, new { @class = "btn btn-default" })
+        </p>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4" style="">
+        <div class="content-box">
+            <header style="padding-left:25px;padding-right:25px;">
+                <img src="~/images/48/social-twitter.png" style="margin-top:-20px;margin-left:-20px;position:relative;float:left;"
+                     alt="twitter" />
+                <h2>On the Tweet</h2>
+                <h3>What I'm talking about</h3>
+            </header>
+            <a class="twitter-timeline" href="https://twitter.com/Yeti0506"
+               data-widget-id="540576418028343296"
+               data-theme="light"
+               data-link-color="#cc0000"
+               data-related="twitterapi,twitter"
+               data-aria-polite="assertive"
+               data-chrome="noborders transparent"
+               height="500">
+                Tweets by &#64;Yeti0506
+            </a>
+            <script type="text/javascript">
+                        !function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s); js.id = id;
+                                js.src = p + "://platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");
+            </script>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="content-box">
+            <div id="rssFeed">
+                <div style="display:block;min-height:500px;overflow:auto;text-align:center;vertical-align:middle;">
+                    <img src="/images/loading/loading3.gif" style="margin-top:100px;" alt="loading ..." />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4" style="">
+        <div class="content-box">
+            <div id="youtubeFeed">
+                <div style="display:block;min-height:500px;overflow:auto;text-align:center;vertical-align:middle;">
+                    <img src="/images/loading/loading3.gif" style="margin-top:100px;" alt="loading ..." />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+@Styles.Render("~/Content/colorbox")
+@Scripts.Render("~/bundles/colorbox")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            //assign the Colorbox event to elements
+            $(".youtube").colorbox({ iframe: true, innerWidth: 640, innerHeight: 390 });
+        }
+
+        //API routing --> does not work with webpagerouting
+        //workaround --> preceed api url with /api
+        $.getJSON("/api/rssfeed", { rssid: '35ef6851-55ed-4563-b7cf-2004fae75c53' },
+            function (data) {
+                $("#rssFeed").empty();
+                $("#rssFeed").append(data);
+            });
+        $.getJSON("/api/youtubefeed", { rssid: '94d833a3-a56c-4af3-a81d-d0cedd815685' },
+            function (data) {
+                $("#youtubeFeed").empty();
+                $("#youtubeFeed").append(data);
+
+                //assign the Colorbox event to elements
+                $(".youtube").colorbox({ iframe: true, innerWidth: 640, innerHeight: 390 });
+            });
+
+        //Page methods --> does not work with webpage routing
+        //workaround http://stackoverflow.com/questions/8147186/pagemethods-in-asp-net-failed-to-work-if-you-have-asp-net-routing-implemented
+        //PageMethods.set_path('/default.aspx');
+        //PageMethods.getRSS('e54e06a6-d559-43da-b08d-8e64c1050279', getRSS_Success, getRSS_Failure);
+        function getRSS_Success(results) {
+            if (results) {
+                $("#rssFeed").empty();
+                $("#rssFeed").append(results);
+            }
+            else
+                alert("An unexpected error occurred");
+        }
+        function getRSS_Failure(error) {
+            if (error) {
+                alert(error.get_message());
+            }
+            else
+                alert("An unexpeceted error occurred");
+        }
+
+        //PageMethods.set_path('/default.aspx');
+        //PageMethods.getYouTube('fa58cdf1-6cc6-433e-a9fb-173b2d5ca171', getYouTube_Success, getYouTube_Failure);
+        function getYouTube_Success(results) {
+            if (results) {
+                $("#youtubeFeed").empty();
+                $("#youtubeFeed").append(results);
+
+                //assign the Colorbox event to elements
+                $(".youtube").colorbox({ iframe: true, innerWidth: 640, innerHeight: 390 });
+            }
+            else
+                alert("An unexpected error occurred");
+        }
+        function getYouTube_Failure(error) {
+            if (error) {
+                alert(error.get_message());
+            }
+            else
+                alert("An unexpeceted error occurred");
+        }
+    </script>
+}
+

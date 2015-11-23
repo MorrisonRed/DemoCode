@@ -1,0 +1,118 @@
+﻿@*@{
+    ViewBag.Title = "Manage";
+}*@
+
+<div class="row">
+    <div class="col-md-12" style="float:left;">
+        <h4 style="text-align:center;">Management</h4>
+
+        <div style="width:100%;text-align:center">
+            <ul class="nav nav-pills center-pills">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li class="active">
+                    <a href="/Management">Management</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content" style="text-align:left;">
+            <a href="/ManageUsers" style="float:left;margin:5px;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-users" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;">Users</h3>
+                </div>
+            </a>
+
+            <a href="/manage/roles" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-shield" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;">Roles</h3>
+                </div>
+            </a>
+
+            <a href="/manage/projects" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-area-chart" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">Projects</h3>
+                </div>
+            </a>
+
+            <a href="/manage/Taxonomy" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-th-large" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">Project</h3>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;margin-top:-5px">Taxonomy</h3>
+                </div>
+            </a>
+
+            <a href="/manage/RSS" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-rss" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">RSS</h3>
+                </div>
+            </a>
+
+            <a href="/manage/youtube" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-youtube" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">YouTube</h3>
+                </div>
+            </a>
+
+            <a href="/manage/user" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-certificate" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">Recent</h3>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;margin-top:-5px">Updates</h3>
+                </div>
+            </a>
+
+            <a href="/manage/explore" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-folder-open-o" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">Explore</h3>
+                </div>
+            </a>
+
+
+            <a href="/manage/documents" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-file-archive-o" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">Documents</h3>
+                </div>
+            </a>
+
+
+            <a href="/EventMessage" style="float:left;margin:5px;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-dashboard" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">Events</h3>
+                </div>
+            </a>
+
+            <a href="/manage/contacts" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-th-list" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">Contact</h3>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;margin-top:-5px">Cards</h3>
+                </div>
+            </a>
+
+            <a href="/manage/config" style="float:left;margin:5px;display:none;">
+                <div class="tile" style="width:140px;min-height:140px;padding-top:30px;">
+                    <div class="icon fa fa-cogs" style="display:inline-block;width:100%;text-align:center;margin: auto;font-size:36px;"></div>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;">System</h3>
+                    <h3 style="width:100%;text-align:center;margin-bottom:0;padding-bottom:0;margin-top:-5px">Config</h3>
+                </div>
+            </a>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+
+@section Scripts {
+    @Styles.Render("~/Content/colorbox")
+    @Scripts.Render("~/bundles/colorbox")
+}

@@ -1,0 +1,129 @@
+﻿@using democode.mvc.Helpers
+
+@*@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+
+@model democode.mvc.Models.UserModels
+
+@{
+    ViewBag.Title = "Edit Users";
+}
+
+<div class="row">
+    <div class="col-md-12" style="float:left;">
+        <h4 style="text-align:center;">Manage Users</h4>
+
+        <div style="width:100%;text-align:center">
+            <ul class="nav nav-pills center-pills">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li class="">
+                    <a href="/Management">Management</a>
+                </li>
+                <li>
+                    <a href="/ManageUsers">Users</a>
+                </li>
+                <li class="active">
+                    <a href="/ManageUsers/Edit">Edit User</a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            @ViewBag.Message
+        </div>
+
+        @using (Html.BeginForm("Edit", "ManageUsers", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.AppID)
+            @Html.HiddenFor(model => model.UID)
+            @Html.HiddenFor(model => model.Demographics.Lanaguage)
+            @Html.HiddenFor(model => model.Demographics.Country)
+            @Html.HiddenFor(model => model.Demographics.PostalCode)
+            @Html.HiddenFor(model => model.Demographics.PhoneMobile)
+            @Html.HiddenFor(model => model.Membership.Email)
+            @Html.HiddenFor(model => model.Role.RoleID)
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Username)
+                    @Html.ValidationMessageFor(model => model.Username)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Role.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Roles")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Demographics.FirstName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Demographics.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Demographics.FirstName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Demographics.LastName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Demographics.LastName)
+                    @Html.ValidationMessageFor(model => model.Demographics.LastName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Demographics.Gender, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Demographics.Gender)
+                    @Html.ValidationMessageFor(model => model.Demographics.Gender)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Demographics.Lanaguage, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Lanaguages")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Demographics.DateOfBirth, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Demographics.DateOfBirth)
+                    @Html.ValidationMessageFor(model => model.Demographics.DateOfBirth)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Save" />
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        jQuery(function ($) {
+    
+        });
+    </script>
+}
+
+

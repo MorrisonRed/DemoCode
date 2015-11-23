@@ -1,0 +1,133 @@
+/* Example tokeninput style #2: MorrisonRed style */
+ul.token-input-list-morrisonred {
+    overflow: hidden; 
+    /*height: auto !important;*/ 
+    /*height: 1%;*/
+    line-height:1.2em;
+    border:solid 1px #474f51;
+    border-radius:4px;
+    cursor: text;
+    font-size:18px;
+    font-weight: 300;
+    font-family: "Yanone Kaffeesatz";
+    min-height: 1px;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    list-style-type: none;
+    clear: left;
+}
+
+ul.token-input-list-morrisonred li input {
+    border: 0;
+    width: 100px;
+    padding:4px 6px;
+    background-color: white;
+    font-size:18px;
+    margin: 5px 0;
+    -webkit-appearance: caret;
+}
+
+li.token-input-token-morrisonred {
+    overflow: hidden; 
+    line-height:1.2em;
+    /*height: auto !important;*/ 
+    /*height: 15px;*/
+    margin: 5px;
+    padding:4px 6px;
+    background-color: #474f51;
+    border: 1px solid #474f51;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    color: #fff;
+    cursor: default;
+    font-size:18px;
+    float: left;
+    white-space: nowrap;
+}
+li.token-input-token-morrisonred:hover {
+    background-color: #43717d;
+}
+
+li.token-input-token-morrisonred p {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+li.token-input-token-morrisonred span {
+    margin-left: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 26px;
+    font-weight:300;
+    font-family: "Yanone Kaffeesatz";
+    color: #fff;
+}
+
+li.token-input-selected-token-morrisonred {
+    background-color: #3276b1;
+    border: 1px solid #3276b1;
+    color: #fff;
+}
+
+li.token-input-input-token-morrisonred {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+div.token-input-dropdown-morrisonred {
+    position: absolute;
+    min-width:400px;
+    background-color: #fff;
+    overflow: hidden;
+    border-left: 1px solid #474f51;
+    border-right: 1px solid #474f51;
+    border-bottom: 1px solid #474f51;
+    cursor: default;
+    font-size: 18px;
+    font-weight:300;
+    font-family: "Yanone Kaffeesatz";
+    z-index: 1;
+}
+
+div.token-input-dropdown-morrisonred p {
+    margin: 0;
+    padding: 5px;
+    font-weight: 300;
+    color: #474f51;
+}
+
+div.token-input-dropdown-morrisonred ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.token-input-dropdown-morrisonred ul li {
+    background-color: #fff;
+    padding: 3px;
+    margin: 0;
+    list-style-type: none;
+}
+
+div.token-input-dropdown-morrisonred ul li.token-input-dropdown-item-morrisonred {
+    background-color: #fff;
+}
+
+div.token-input-dropdown-morrisonred ul li.token-input-dropdown-item2-morrisonred {
+    background-color: #fff;
+}
+
+div.token-input-dropdown-morrisonred ul li em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+div.token-input-dropdown-morrisonred ul li.token-input-selected-dropdown-item-morrisonred {
+    background-color: #3276b1;
+    color: #fff;
+}

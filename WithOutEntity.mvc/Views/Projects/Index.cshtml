@@ -1,0 +1,97 @@
+﻿@model IEnumerable<democode.mvc.Models.ProjectModels>
+
+@{
+    ViewBag.Title = "Projects";
+}
+
+@*<h2>@ViewBag.Title.</h2>*@
+
+<div class="row">
+    <div class="col-md-3" style="float:left;">
+        <h4 style="text-align:left;">Projects</h4>
+        <ul class="link-list" style="list-style:none;list-style-image:none;margin:0;padding:0;">
+            @foreach (var item in Model)
+            { 
+                <li style="padding-bottom:4px;"><a href="#" onclick="goToSection('@item.Code');">@item.Name</a></li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-9" style="float:left;">
+        <h4 style="text-align:center;">Projects Timeline</h4>
+
+        <div style="width:100%;text-align:center">
+            <ul class="nav nav-pills center-pills">
+                <li @if (@ViewContext.RouteData.Values["taxonomy"] == null) { @Html.Raw("class='active'") }>
+                    <a href="/projects">All Projects</a></li>
+                <li @if (@ViewContext.RouteData.Values["taxonomy"] != null && @ViewContext.RouteData.Values["taxonomy"].ToString() == "personal") 
+                    { @Html.Raw("class='active'") }>
+                    <a href="/projects/personal">Personal Projects</a></li>
+                <li @if (@ViewContext.RouteData.Values["taxonomy"] != null && @ViewContext.RouteData.Values["taxonomy"].ToString() == "professional")
+                    { @Html.Raw("class='active'") }>
+                    <a href="/projects/professional">Professional Projects</a></li>
+            </ul>
+        </div>
+
+        <div id="cd-timeline" class="cd-container">
+            @foreach (var item in Model)
+            {
+                <div class='cd-timeline-block'>
+                    <div class='cd-timeline-img cd-picture'>
+                        <img src="@Url.Content(item.Icon)" alt="Image" />
+                    </div>
+                    <div class="cd-timeline-content @item.Code">
+                        <h2 style="font-size:26px;margin:0;padding-bottom:0;">@item.Name</h2>
+                        <h3 style="font-size:20px;margin:0;padding:0;"><a href="@item.URL" target="_blank">@item.Organization</a></h3>
+                        <p>@item.Caption</p>
+                        <p>@Convert.ToDateTime(item.EstimatedStartDate).ToString("dd-MMM-yy") to @Convert.ToDateTime(item.EstimatedEndDate).ToString("dd-MMM-yy")</p>
+                        <a href='/projects/project/@item.Code' class='button special'>Read more</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+@Styles.Render("~/Content/colorbox")
+@Scripts.Render("~/bundles/colorbox")
+@Styles.Render("~/Content/timeline")
+@Scripts.Render("~/bundles/timeline")
+@Scripts.Render("~/bundles/scrollto")
+
+    <style type="text/css">
+        .centered-pills {  
+            text-align: center
+        }
+        .centered-pills ul.nav-pills {
+            display: inline-block
+        }
+        .centered-pills li {
+            display: inline
+        }
+        .centered-pills a {
+            float: left
+        }
+        * html .centered-pills ul.nav-pills, *+html .centered-pills ul.nav-pills {
+            display: inline
+        }
+    </style>
+    <script type="text/javascript">
+        //Define the entry point
+        $(document).ready(function () {
+            $(".mustlogin").colorbox({ inline: true, width: "400px" });
+        });
+
+        function goToSection(classid) {
+            //alert(classid);
+            var target = "." + classid;
+            if (navigator.appVersion.indexOf("MSIE") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
+                $('html').scrollTo(target);
+            }
+            else {
+                $('body').scrollTo(target);
+            }
+        }
+</script>
+}
+

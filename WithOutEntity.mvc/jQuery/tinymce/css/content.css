@@ -1,0 +1,32 @@
+﻿.mce-tinymce, 
+.mce-container, .mce-panel
+{
+
+}
+.tinyMCEEditor
+{
+    color: #474f51 !important; 
+    font-size: 13.5pt !important; 
+	font-family: 'Yanone Kaffeesatz' !important; 
+	line-height: 1.85em !important; 
+	font-weight: 300 !important; 
+
+}
+/* TinyMCE specific rules */
+body.mceContentBody, 
+body.mce-content-body {
+   background: green;
+}
+
+.mceContentBody, 
+.mce-content-body {
+    color: #474f51 !important; 
+    font-size: 13.5pt !important; 
+	font-family: 'Yanone Kaffeesatz' !important; 
+	line-height: 1.85em !important; 
+	font-weight: 300 !important; 
+}
+.mceContentBody a, 
+.mce-content-body a {
+   color: #e0e8eb !important; 
+}

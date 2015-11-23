@@ -1,0 +1,114 @@
+﻿@using democode.mvc.Models
+@model ProjectModels
+
+@{
+    ViewBag.Title = "Project";
+}
+
+<div class="row">
+    <div class="col-md-12" style="text-align:center;">
+        <h2 style="padding:0;margin:0;">@Html.ValueFor(model => model.Name)</h2>
+        <h3 style="padding:0;margin:0;">@Convert.ToDateTime(Model.EstimatedStartDate).ToString("d MMM yy") to @Convert.ToDateTime(Model.EstimatedEndDate).ToString("d MMM yy")</h3>
+        <h3 style="padding:0;margin:0;">@Html.ValueFor(model => model.Caption)</h3>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div id="tableofcontents" class="table-of-contents">
+            <ul>
+                <li>
+                    <a href="#projectdrivers" onclick="goToSection('projectdrivers');">Project Drivers</a>
+                    <ul>
+                        <li>Project Objective</li>
+                        <li>Deliverables</li>
+                        <li>Milestones</li>
+                        <li>Technical Requirements</li>
+                        <li>Limits and Exclusions</li>
+                        <li>Customer Review</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#projectdelivery" onclick="goToSection('projectdelivery');">Delivery Strategy & approach</a>
+                    <ul>
+                        <li>Strategy</li>
+                        <li>Approach</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#projectmanagement" onclick="goToSection('projectmanagement');">Management Dimensions</a>
+                    <ul>
+                        <li>Goverance</li>
+                        <li>Change Management</li>
+                        <li>Risk Management</li>
+                        <li>Time/Schedule Management</li>
+                        <li>Cost Management</li>
+                        <li>Quality Management</li>
+                        <li>Resource Management</li>
+                        <li>Communication Management</li>
+                        <li>Vendor Management</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#projectlessions" onclick="goToSection('projectlessions');">Lessons Learned</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="slider_container">
+            <div id="slides">
+                @{
+                    for (var i = 0; i < Model.ProjectImages.Count(); i++)
+                    {
+                        <img src="@Model.ProjectImages[i]" alt="@("slide" + i)" />
+                    }
+                }
+            </div>
+        </div>
+
+        <div>
+            @Html.ValueFor(model => model.Caption)
+            @Html.Raw(Model.Description)
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+@Scripts.Render("~/bundles/scrollto")
+@Scripts.Render("~/bundles/slider")
+@Styles.Render("~/Content/slider")
+
+
+    <script type="text/javascript">
+        //Define the entry point
+        $(document).ready(function () {
+            var h = $(window).height();
+            var w = $(window).width();
+
+            $('#slides').slidesjs({
+                width: 940,
+                height: 528,
+                play: {
+                    active: true,
+                    auto: true,
+                    interval: 4000,
+                    swap: true
+                }
+            });
+        });
+
+        function goToSection(classid) {
+            //alert(classid);
+            var target = "." + classid;
+            if (navigator.appVersion.indexOf("MSIE") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
+                $('html').scrollTo(target);
+            }
+            else {
+                $('body').scrollTo(target);
+            }
+        }
+    </script>
+}
